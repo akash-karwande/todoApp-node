@@ -1,7 +1,9 @@
 
 var mongoose = require('mongoose');
 
-var Todo = mongoose.model('Todo', {
+
+
+var todoSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -17,6 +19,8 @@ var Todo = mongoose.model('Todo', {
         type: Number,
         default: null
     }
-});
+})
+
+var Todo = mongoose.model('Todo', todoSchema);
 
 module.exports = {Todo};
