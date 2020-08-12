@@ -65,6 +65,19 @@ userSchema.methods.generateAuthToken = function(){
 
 };
 
+// remove auth token when user logout
+
+userSchema.methods.removeToken = function(token) {
+    var user = this;
+
+    return user.updateOne({
+        $pull: {
+            tokens: {token}
+        }
+    });
+
+};
+
 
 // find user by token
 
